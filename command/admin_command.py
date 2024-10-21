@@ -18,6 +18,6 @@ async def admin_command(ctx):
             ctypes.windll.shell32.ShellExecuteW(
                 None, "runas", sys.executable, ' '.join(sys.argv), None, 1
             )
-            sys.exit()
+            await ctx.send("Privileges elevated successfully. You can now run admin commands.")
         except Exception as e:
             await ctx.send(f"Failed to elevate privileges: {str(e)}")

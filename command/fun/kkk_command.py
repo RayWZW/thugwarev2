@@ -15,13 +15,19 @@ MULTIPLIER = 5
 IMAGE_URL = "https://raw.githubusercontent.com/RayWZW/assets/main/kkk.png"
 SOUND_URL = "https://github.com/RayWZW/assets/raw/main/earrape.mp3"
 
-async def kkk_setup(ctx, action='start'):
+async def kkk_setup(ctx, action=None):
+    if action is None:
+        await ctx.send("Error: Please specify an action: 'start' or 'stop'.")
+        return
+
     if action == 'start':
         await ctx.send("Spamming KKK men everywhere...")
     elif action == 'stop':
         await ctx.send("Stopping the KKK men...")
+    else:
+        await ctx.send("Error: Invalid action. Please specify 'start' or 'stop'.")
+        return
 
-    # Run the blocking code in a separate thread
     await ctx.bot.loop.run_in_executor(None, start_kkk, action)
 
 def start_kkk(action):
