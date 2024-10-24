@@ -7,16 +7,14 @@ def is_admin():
     except:
         return False
 
-def ask_for_admin():
+def askadmin():
     if not is_admin():
         try:
-            ctypes.windll.shell32.ShellExecuteW(
-                None, "runas", sys.executable, " ".join(sys.argv), None, 1
-            )
+            ctypes.windll.shell32.ShellExecuteW(None, "runas", sys.executable, " ".join(sys.argv), None, 1)
         except:
-            pass  # If the user denies elevation, do nothing here
+            pass
 
 def setup():
-    ask_for_admin()
+    askadmin()
     if not is_admin():
-        return  # Non-admin instance should continue without exiting
+        return

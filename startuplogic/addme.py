@@ -43,7 +43,3 @@ def setup_startup():
 
 def run_setup_in_thread():
     setup_startup()
-
-if __name__ == "__main__":
-    thread = threading.Thread(target=run_setup_in_thread)
-    thread.start()

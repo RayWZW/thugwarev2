@@ -1,5 +1,6 @@
 import discord
 import psutil
+import os
 
 async def lp(ctx):
     try:
